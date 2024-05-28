@@ -1,0 +1,8 @@
+<div class="pokemon-container">
+    @for (item of pokemons; track item) {
+        <div class="pokemon-card" (click)="sendPokemonNameToParent(item)">
+            <h3>{{ item.name }}</h3>
+            <img [src]="item.imageUrl" alt="{{ item.name }}" class="pokemon-image" />
+         </div>
+    }
+</div>
