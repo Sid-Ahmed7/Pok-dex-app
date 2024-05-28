@@ -1,0 +1,28 @@
+<form #pokemonForm="ngForm"(ngSubmit)="pokemonForm.valid && createPokemon()">
+
+    <div class="form-group">
+        <label for="pokemonName">Nom du Pokemon</label>
+        <input type="text" id="pokemonName" name="pokemonName" [(ngModel)]="pokemon.name" #pokemonName="ngModel"
+            required>
+        @if(pokemonName.errors){ @if(pokemonName.errors['required']) {
+        <p [ngStyle]="{color: 'red'}">Le nom du Pokémon est requis</p>
+        }}
+    </div>
+
+    <div class="form-group">
+        <label for="imageUrl">Lien de l'image du Pokemon</label>
+        <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="pokemon.imageUrl" #imageUrl="ngModel" required>
+        @if(imageUrl.errors){@if(imageUrl.errors['required']){
+        <p [ngStyle]="{color: 'red'}">Le lien de l'image du Pokemon est requis</p>
+        }}
+    </div>
+    <div class="form-group">
+        <label for="description">Descritpion du Pokemon</label>
+        <input type="text" id="description" name="description" [(ngModel)]="pokemon.description" #description="ngModel" required>
+        @if(description.errors){@if(description.errors['required']){
+        <p [ngStyle]="{color: 'red'}">La description du Pokemon est requis</p>
+        }}
+    </div>
+
+    <button type="submit">Ajouter</button>
+</form>
