@@ -21,10 +21,27 @@ export class CreatePokemonPageComponent {
     types: [],
   };
 
+  pokemonTypes: string[] = ['Feu', 'Eau', 'Plante', 'Insecte', 'Normal', 'Vol', 'Fée', 'Psy', 'Electrik', 'Combat', 'Acier', 'Dragon', 'Glace', 'Poison', 'Roche', 'Sol', 'Spectre', 'Ténèbres'];
+  selectedTypes: { [key: string]: boolean } = {};
+
   constructor(private router: Router) { }
 
   pokemonService = inject(PokedexService);
 
+  onTypeChange(type: string, event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const isChecked = inputElement.checked;
+
+    if (isChecked) {
+      this.pokemon.types.push(type);
+    } else {
+      const index = this.pokemon.types.indexOf(type);
+      if (index > -1) {
+        this.pokemon.types.splice(index, 1);
+      }
+    }
+  }
+  
   createPokemon(): void {
     const newPokemon: Pokemon = {
       name: this.pokemon.name,
