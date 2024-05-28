@@ -1,1 +1,7 @@
-<p>pokedex-page works!</p>
+<div class="pokemon-display">
+    <app-pokemon-list [pokemons]="pokemons" (pokemonClick)="onReceivePokemon($event)"
+        class="pokemon-list"></app-pokemon-list>
+    <div class="pokemon-details">
+        <app-pokemon-detail [pokemon]="pokemonDetail"></app-pokemon-detail>
+    </div>
+</div>
